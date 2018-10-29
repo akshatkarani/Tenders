@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'post/main.css' %}">
+
+
+	{% if title %}
+		<title>Tendera - {{ title }}</title>
+	{% else %}
+		<title>Tendera</title>
+	{% endif %}
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="{% url 'post-home' %}">
+	      	<span>
+	      	<img src= "{% static 'tendera.png'%}" alt="logo" style="width:25px;">
+	      	tendera
+	      	</span>
+	      </a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="{% url 'post-home' %}">Home</a></li>
+	      <li><a href="{% url 'post-about' %}">About</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	      {% if user.is_authenticated %}
+	      	  <li><a href="{% url 'user-profile' %}"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+	      	  <li><a href="{% url 'user-logout' %}"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+	      {% else %}
+		      <li><a href="{% url 'user-register' %}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+		      <li><a href="{% url 'user-login' %}"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+		  {% endif %}
+	    </ul>
+	  </div>
+	</nav>
+
+	<div class=container>
+		{% if messages%}
+		{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				{{ message }}
+			</div> 
+		{% endfor%}
+		{% endif %}
+		{% block content %}{% endblock%}
+	</div>
+
+	<!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+	<!-- Container (Contact Section) -->
+	<!-- <div id="contact" class="container-fluid bg-grey">
+	  <h2 class="text-center">CONTACT</h2>
+	  <div class="row">
+	    <div class="col-sm-5">
+	      <p>Contact us and we'll get back to you within 24 hours.</p>
+	      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
+	      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+	      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+	    </div>
+	    <div class="col-sm-7 slideanim">
+	      <div class="row">
+	        <div class="col-sm-6 form-group">
+	          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+	        </div>
+	        <div class="col-sm-6 form-group">
+	          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+	        </div>
+	      </div>
+	      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+	      <div class="row">
+	        <div class="col-sm-12 form-group">
+	          <button class="btn btn-default pull-right" type="submit">Send</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div> -->
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="#">Tendera</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+  <!-- Footer -->
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
