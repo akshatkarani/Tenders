@@ -5,7 +5,6 @@
 <title>Tenders and Business Listings</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 <link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
@@ -15,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="plugins/slick-1.8.0/slick.css">
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+<link rel="stylesheet" type="text/css" href="styles/sign_in.css">
 </head>
 
 <body>
@@ -29,8 +29,29 @@
 					<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:tenders@gmai.com">tenders@gmail.com</a></div>
 					<div class="top_bar_content ml-auto top_bar_user">
 						<div class="user_icon"><img src="images/user.svg" alt=""></div>
-						<div><a href="#">Register</a></div>
-						<div><a href="#">Sign in</a></div>
+						<div><a href="#">Post Your Tender</a></div>
+						<div onclick="document.getElementById('signin').style.display='block'"><a href="#">Sign in</a></div>
+
+						<div id="signin" class="modal" style="display: none;">
+						<div style="width: 50%">
+					    <form class="modal-content animate" action="">					    
+					    <div class="container">
+					      	<label for="uname">Username</label>
+<!-- 					      	<button type="button" onclick="document.getElementById('signin').style.display='none'">X</button>
+ -->					      	<input type="text" placeholder="Enter Username" name="uname" required>
+					      	<label for="psw">Password</label>
+					      	<input type="password" placeholder="Enter Password" name="psw" required>					        
+					      	<button type="submit">Login</button>
+					      	
+					    </div>
+					    <div class="container" style="background-color:#f1f1f1">
+					      	<span class="remember"><input type="checkbox" checked="checked" name="remember">Remember me</span>
+					      	<span class="psw"><a href="#">Forgot password?</a></span>
+					    </div>
+					    </form>
+						</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -207,5 +228,6 @@
 <script src="plugins/slick-1.8.0/slick.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/sign_in.js"></script>
 </body>
 </html>
