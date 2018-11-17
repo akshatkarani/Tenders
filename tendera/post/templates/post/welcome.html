@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'post/main.css' %}">
+    
+	{% if title %}
+		<title>Tendera - {{ title }}</title>
+	{% else %}
+		<title>Tendera</title>
+	{% endif %}
+</head>
+<body style="margin-top: 5rem;">
+	<nav class="navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="{% url 'home' %}">
+	      	<span>
+	      	<img src= "{% static 'tendera.png'%}" alt="logo" style="width:25px;">
+	      	tendera
+	      	</span>
+	      </a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li ><a href="{% url 'post-home' %}">Home</a></li>
+	      <li ><a href="{% url 'advert-home' %}">Ads</a></li>
+	      <li><a href="{% url 'post-about' %}">About</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	      {% if user.is_authenticated %}
+	      	  <li><a href="{% url 'user-dashboardads' user.username %}"><span class="glyphicon glyphicon-user"></span>	My Ads</a></li>
+	      	  <li><a href="{% url 'user-dashboard' user.username %}"><span class="glyphicon glyphicon-user"></span>	Dashboard</a></li>
+	      	  <li><a href="{% url 'advert-create' %}"><span class="glyphicon glyphicon-user"></span>	Have a business?</a></li>
+	      	  <li><a href="{% url 'post-create' %}"><span class="glyphicon glyphicon-user"></span>	Post New Tender</a></li>
+	      	  <li><a href="{% url 'user-profile' %}"><span class="glyphicon glyphicon-user"></span>	Profile</a></li>
+	      	  <li><a href="{% url 'user-logout' %}"><span class="glyphicon glyphicon-user"></span>	Logout</a></li>
+	      {% else %}
+	      	  <li><a href="{% url 'user-register' %}"><span class="glyphicon glyphicon-log-in"></span>	Sign Up</a></li>
+		      <li><a href="{% url 'user-login' %}"><span class="glyphicon glyphicon-log-in"></span>	Log In</a></li>
+		  {% endif %}
+	    </ul>
+	  </div>
+	</nav>
+
+	<section class="bg-image-full" style="background-image: url('{% static 'business-w1.jpg'%}');background-attachment:fixed;background-size: auto; ">
+      <div style="height: 400px;">
+      		<br><br><br><br><br><br>
+      		<div class="content col-sm-4"></div>
+      		<div class="content col-sm-4" style="background: rgba(0, 0, 0, 0.75);">
+    			<div>
+    				<br>
+	    			<h1 style="color: white" class="text-center">Welcome to tendera</h1>
+	    			<p style="color: white" class="text-center">A place to cater all your needs</p>
+	    			<p class="text-center">
+	    				<a href="{% url 'post-home' %}">
+	    					<button class="button-main">Get Involved</button>
+	    				</a>
+	    			</p>
+	  				<br>
+    			</div>
+  			</div>
+      </div>
+    </section>
+    
+	<div id="services" class="container-fluid text-center">
+		  <h3>SERVICES</h3>
+		  <h4>What we offer</h4>
+		  <br>
+		  <div class="row slideanim">
+		    <div class="col-sm-4">
+		      <span class="glyphicon glyphicon-user" style="font-size: 30px;color: orange"></span>
+		      <h4 style="color: black"><b>Support</b></h4>
+		      <!-- <p>We connect</p> -->
+		    </div>
+		    <div class="col-sm-4">
+		      <span class="glyphicon glyphicon-random" style="font-size: 30px;color: orange"></span>
+		      <h4 style="color: black"><b>Effective Communication</b></h4>
+		      <!-- <p>We connect</p> -->
+		    </div>
+		    <div class="col-sm-4">
+		      <span class="glyphicon glyphicon-lock" style="font-size: 30px;color: orange"></span>
+		      <h4 style="color: black"><b>Global Outreach</b></h4>
+		      <!-- <p>We connect</p> -->
+		    </div>
+	  </div>
+	  <br>
+	</div>
+    <section class="py-5 bg-image-full" style="background-image: url('{% static 'bg3.png'%}');background-attachment: fixed;width: 100%;background-repeat:no-repeat;background-size: cover">
+      <div style="height: 430px;"></div>
+    </section>
+    <section class="py-5">
+    
+    <div class="container">
+      	<br>
+        <h1 class="text-center">Our Vision</h1>
+        <p class="text-center">We plan to assist businesses and organizations by providing a portal to post tenders and requirements. These requirements are tracked by dealers/businesses all over the world which in turn provide a quotation to take up the task. It helps to outsource services such as a requirement of “personnel’s to guard the premises”, “a cleaning staff” etc. and product requirements such as “computers and laptops”, “construction materials” etc.</p>
+      	<br>
+      </div>
+
+	<div style="background-color: #383838;">
+	  <br>
+	  <div class="container">
+	  <div class="row">
+	    <div class="col-sm-4">
+	      <span style="color: white">
+	      	<img src= "{% static 'tendera.png'%}" alt="logo" style="width:50px;">
+	      	<b style="font-size: 25px">tendera</b>
+      	  </span>
+      	  <br>
+      	  <br>
+	      <p style="color: white"><span class="glyphicon glyphicon-map-marker"></span> Delhi, India</p>
+	      <p style="color: white"><span class="glyphicon glyphicon-phone"></span> +91 0000000000</p>
+	      <p style="color: white"><span class="glyphicon glyphicon-envelope"></span> help.tendera@gmail.com</p>
+	      <br>
+	    </div>
+	    <div class="col-sm-4">
+	      <a href="{% url 'post-home' %}"><p style="color: white">Home</p></a>
+	      <a href="{% url 'post-about' %}"><p style="color: white">About</p></a>
+	      <br>
+	    </div>
+	    <div class="col-sm-4">
+	      <a href="{% url 'user-register' %}"><p style="color: white">Register</p></a>
+	      <a href="{% url 'user-login' %}"><p style="color: white">Sign In</p></a>
+	      <br>
+	    </div>
+	  </div>
+	  </div>
+	</div>
+
+	<div class=container>
+		{% if messages%}
+		{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				{{ message }}
+			</div> 
+		{% endfor%}
+		{% endif %}
+		{% block content %}{% endblock%}
+	</div>
+
+	<!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+	<!-- Container (Contact Section) -->
+	<!-- <div id="contact" class="container-fluid bg-grey">
+	  <h2 class="text-center">CONTACT</h2>
+	  <div class="row">
+	    <div class="col-sm-5">
+	      <p>Contact us and we'll get back to you within 24 hours.</p>
+	      <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
+	      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+	      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+	    </div>
+	    <div class="col-sm-7 slideanim">
+	      <div class="row">
+	        <div class="col-sm-6 form-group">
+	          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+	        </div>
+	        <div class="col-sm-6 form-group">
+	          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+	        </div>
+	      </div>
+	      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+	      <div class="row">
+	        <div class="col-sm-12 form-group">
+	          <button class="btn btn-default pull-right" type="submit">Send</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div> -->
+    <!-- Copyright -->
+    <div style="background-color: #383838;color: white" class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="#">Tendera</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+  <!-- Footer -->
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
