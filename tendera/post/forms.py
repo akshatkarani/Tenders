@@ -8,6 +8,7 @@ class PostCreateForm(forms.ModelForm):
         model = Post
         fields = ['category', 'item', 'quantity', 'document', 'description']
 
+
 class PostUpdateForm(forms.ModelForm):
     class Meta:
         model = Post

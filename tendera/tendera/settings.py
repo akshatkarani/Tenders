@@ -137,4 +137,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'help.tendera@gmail.com'
 EMAIL_HOST_PASSWORD = 'tendera@1211'
-

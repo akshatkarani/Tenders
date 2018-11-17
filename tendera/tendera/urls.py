@@ -23,8 +23,8 @@ from post import views as post_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', post_views.welcome, name="home"),
-   	path('post/', include('post.urls')),
- 	path('users/', include('users.urls')),
+    path('post/', include('post.urls')),
+    path('users/', include('users.urls')),
     path('advert/', include('advert.urls')),
     path('password-reset/',
          auth_views.PasswordResetView.as_view(
@@ -46,8 +46,9 @@ urlpatterns = [
              template_name='users/password_reset_complete.html'
          ),
          name='password_reset_complete'),
-   	  	
+
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

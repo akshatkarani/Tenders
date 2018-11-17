@@ -7,26 +7,27 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Advert(models.Model):
-	image = models.ImageField(default= 'default_business.jpg', upload_to = 'business_pics')
-	name = models.CharField(max_length=100)
-	address = models.CharField(max_length=100)
-	email = models.EmailField()
-	products = models.ManyToManyField('Item')
-	hours = models.CharField(max_length=100, default= '10:00AM – 08:00PM (Mon-Sat)')
-	details = models.TextField()
-	date_posted = models.DateTimeField(auto_now_add= True)
-	author = models.ForeignKey(User, on_delete = models.CASCADE)
+    image = models.ImageField(
+        default='default_business.jpg', upload_to='business_pics')
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    email = models.EmailField()
+    products = models.ManyToManyField('Item')
+    hours = models.CharField(
+        max_length=100, default='10:00AM – 08:00PM (Mon-Sat)')
+    details = models.TextField()
+    date_posted = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
 
-	def __str__(self):
-		return self.name
-
-	def get_absolute_url(self):
-		return reverse('advert-detail', kwargs= {'pk': self.pk})
+    def get_absolute_url(self):
+        return reverse('advert-detail', kwargs={'pk': self.pk})
 
 
 class Item(models.Model):
     item = models.CharField(max_length=30)
 
     def __str__(self):
-    	return self.item
+        return self.item

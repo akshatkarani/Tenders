@@ -17,19 +17,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Advert',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(default='default_business.jpg', upload_to='business_pics')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('image', models.ImageField(
+                    default='default_business.jpg', upload_to='business_pics')),
                 ('name', models.CharField(max_length=100)),
                 ('address', models.CharField(max_length=100)),
                 ('details', models.TextField()),
                 ('date_posted', models.DateTimeField(auto_now_add=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('author', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
             name='Item',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=30)),
             ],
         ),

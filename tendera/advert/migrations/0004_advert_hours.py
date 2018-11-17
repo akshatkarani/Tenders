@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='advert',
             name='hours',
-            field=models.CharField(default='10:00Am – 08:00PM (Mon-Sat)', max_length=100),
+            field=models.CharField(
+                default='10:00Am – 08:00PM (Mon-Sat)', max_length=100),
         ),
     ]
