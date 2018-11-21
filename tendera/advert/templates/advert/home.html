@@ -70,10 +70,20 @@
       <div>
         <b id='business-name' style="color: black;font-size: 20px">{{ advert.name }}</b>
         <br>
-        {{ advert.address }}
+        {{ advert.location }}
         <hr>
       </div>
       <table style="">
+        <tr>
+          <td>
+            Address:
+          </td>  
+          <td class="second-dat">
+              {% for product in advert.products.all %}
+                {{ product }}
+              {% endfor %}
+          </td>
+        </tr>
         <tr>
           <td>
             Working Hours:

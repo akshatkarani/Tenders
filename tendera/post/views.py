@@ -3,10 +3,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Review
 from advert.models import Advert
-from .forms import PostCreateForm, PostUpdateForm 
+from .forms import PostCreateForm, PostUpdateForm, ReviewForm
 from django.contrib.auth.decorators import login_required
+
 # def home(request):
 # 	context = {
 # 		'posts': Post.objects.all()
@@ -64,7 +65,39 @@ class UserDashboardAds(ListView):
 		user = get_object_or_404(User, username= self.kwargs.get('username'))
 		return Advert.objects.filter(author= user).order_by('-date_posted')
 
-class PostDetailView(DetailView):
+@login_required
+def PostDetailView(request,pk):
+	post = get_object_or_404(Post, pk = pk)
+	if request.method == "POST":
+		form = ReviewForm(request.POST, request.FILES)
+		if form.is_valid():
+			document = form.cleaned_data['document'] 
+			comment = form.cleaned_data['comment']
+			user_name = request.user.username
+			review = Review()
+			review.post = post
+			review.user_name = user_name
+			# review.author = request.user
+			review.comment = comment
+			review.document = document
+			review.save()
+	form=ReviewForm()
+	return render(request, 'post/post_detail.html', {'post': post, 'form': form})
+	# if request.method == "POST":
+	# 	form = ReviewForm(request.POST, instance= Review.objects.get(id=pk))
+	# 	if form.is_valid():
+	# 		form.instance.user_name = request.user
+	# 		form.save()
+	# else:
+	# 	form = ReviewForm(instance= Review.objects.get(id=pk))
+	# return render(request, 'post/post_detail.html', {'post': post, 'form': form})
+
+
+# class PostDetailView(DetailView):
+# 	model = Post
+# 	context_object_name = 'post' 
+
+class PaymentView(DetailView):
 	model = Post
 	context_object_name = 'post' 
 
