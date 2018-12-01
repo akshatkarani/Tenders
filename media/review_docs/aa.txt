@@ -1,0 +1,32 @@
+class ConfParserTest_(unittest.TestCase):
+    test_file="""
+    [Default]
+    ignore = aaa
+    ignore += bbb
+    ignore += ccc
+    """
+
+    def setUp(self):
+        self.tempdir = tempfile.gettempdir()
+        self.file = os.path.join(self.tempdir, '.coafile')
+        self.nonexistentfile = os.path.join(self.tempdir, 'e81k7bd98t')
+        with open(self.file, 'w') as file:
+            file.write(self.test_file)
+
+        self.uut = ConfParser()
+        try:
+            os.remove(self.nonexistentfile)
+        except FileNotFoundError:
+            pass
+
+        logger = logging.getLogger()
+
+        with self.assertLogs(logger, 'WARNING') as self.cm:
+            self.sections = self.uut.parse(self.file)
+
+    def tearDown(self):
+        os.remove(self.file)
+
+    def test_multiple_ignore_in_single_settings(self):
+        test_against='aaa\nbbb\nccc'
+        self.assertEqual(test_against, self.uut.sections['default'].contents['ignore'].value)

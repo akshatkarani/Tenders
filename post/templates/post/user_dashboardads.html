@@ -1,0 +1,93 @@
+{% extends "post/base.html" %}
+{% block content %}
+
+  <h1 class="mb-3">Listings by You</h1>
+  {% for advert in adverts %}
+    <div> 
+      <article class="media content-section" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+      <div style="padding: 10px;">
+      <img src="{{ advert.image.url }}" style="height: 250px;width: 250px;padding: 0px 10px 10px 0px" align="left">
+      <h3 style="display: inline;"><span style="float: right" class="label label-success">4.1</span></h3>
+      <div>
+        <b style="color: black;font-size: 20px">{{ advert.name }}</b>
+        <br>
+        {{ advert.address }}
+        <hr>
+      </div>
+      <table>
+        <tr>
+          <td>
+            Working Hours:
+          </td>  
+          <td class="second-dat">
+            {{ advert.hours }}
+          </td>
+        </tr>
+        <tr>
+          <tr>
+          <td>
+            Email:
+          </td>  
+          <td class="second-dat">
+            {{ advert.email }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Featured In:
+          </td>  
+          <td class="second-dat">
+              {% for product in advert.products.all %}
+                {{ product }}
+              {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top">
+            Bio:
+          </td>  
+          <td class="second-dat">
+            <div style="height: 38px;width: 500px; overflow:hidden;text-overflow:ellipsis;>
+               <p class="article-content">{{ advert.details }}</p>
+           </div>
+          </td>
+        </tr>
+      </table>
+      <a href="{% url 'advert-detail' advert.id %}"><button style="background-color: #EAC117; /* Green */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"><b>Details</b></button></a>
+      </div>
+    </article>
+    </div>
+    <br>
+  {% endfor %}
+
+  {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1"><<</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"><</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">></a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">>></a>
+      {% endif %}
+
+    {% endif %}
+
+{% endblock content %}

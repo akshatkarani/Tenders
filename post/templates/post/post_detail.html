@@ -1,0 +1,92 @@
+{% extends "post/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+      <div style="padding: 15px;">
+        <img class=" img-rounded article-imag" style="width: 4%; height: 4%" src="{{ post.author.userprofile.image.url }}">
+      <a class="mr-2" href="{% url 'user-posts' post.author.username %}" style="color: black">{{ post.author }}</a>
+      <div style="float: right;">
+      	<small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+      {% if post.author == user  %}
+	      	<br>
+	      	<a class="btn btn-secondary btn-sm mb-1 mt-1" href="{% url 'post-update' post.id %}">Update</a>
+	      	<a class="btn btn-danger btn-sm mb-1 mt-1" href="{% url 'post-delete' post.id %}">Delete</a>
+      {% endif %}
+  	  </div>
+      <hr>
+      <table>
+        <tr>
+          <td>
+            Item:
+          </td>  
+          <td class="second-dat">
+            <b>{{ post.item }}</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Quantity:
+          </td>  
+          <td class="second-dat">
+            <b>{{ post.quantity }}</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Category:
+          </td>  
+          <td class="second-dat">
+            <b>{{ post.item }}</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Link:
+          </td>  
+          <td class="second-dat">
+            <b><a href="{{ post.document.url }}">{{ post.item }}</a></b>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top">
+            Description:
+          </td>  
+          <td class="second-dat">
+               <p class="article-content">{{ post.description }}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top">
+            Eligibility:
+          </td>  
+          <td class="second-dat">
+               <p class="article-content">{{ post.elegibility }}</p>
+          </td>
+        </tr>
+      </table>
+      </div>
+
+      {% for review in post.review_set.all %}
+      <section class="media content-section" style="border: 1px solid;border-color: #999999;border-radius: 5px;padding: 10px">
+          <div>
+              <em><b style="color: blue">{{ review.user_name }}</b></em>
+              <em >{{ review.date_posted }}</em>
+              <hr>
+              <b><a href="{{ review.document.url }}">Quotation</a></b><br>
+              <em>{{ review.comment }}</em>
+          </div>
+      </section>
+      {% endfor %}
+      <br>
+    
+    <div class ="content-section">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+          <button class="btn btn-outline-info" type="submit"> Submit</button>
+        </div>
+      </form>
+    </div>
+{% endblock content %}
