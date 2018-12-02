@@ -1,10 +1,10 @@
 ### Various files
 
-- advert: This folder contains business listings.
-- post: This folder contains tenders.
-- tendera: This folder contains metadata and django files.
-- users: This folder contains information about users.
-- media: This folder contains all the documents uploaded.
+- **advert**: This folder contains business listings.
+- **post**: This folder contains tenders.
+- **tendera**: This folder contains metadata and django files.
+- **users**: This folder contains information about users.
+- **media**: This folder contains all the documents uploaded.
 - settings.py is the central configuration for all the settings in the project including the list of allowed hosts, email backend, database involved etc.
 - A model is a class that represents table or collection in our DB, and where every attribute of the class is a field of the table or collection. Models are defined in the app/models.py where app can be ["advert", "post", "users"].
 - Django has his own way for URL mapping and it's done by editing your project url.py file (myproject/url.py), further the truncated urls are in the specific apps in the file urls.py.
