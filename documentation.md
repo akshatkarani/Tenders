@@ -12,7 +12,7 @@ Django makes it possible to separate python and HTML, the python goes in views a
 Migrations store the database queries in all the apps.
 
 Code organization is as follows:
-`
+```
 .
 ├── advert
 │   ├── __init__.py
@@ -114,4 +114,4 @@ Code organization is as follows:
     ├── tests.py
     ├── urls.py
     └── views.py
-`
+```
