@@ -1,17 +1,19 @@
-advert- This folder contains business listings.
-post- This folder contains tenders.
-tendera- This folder contains metadata and django files.
-users- This folder contains information about users.
-media- This folder contains all the documents uploaded.
-settings.py is the central configuration for all the settings in the project including the list of allowed hosts, email backend, database involved etc.
-A model is a class that represents table or collection in our DB, and where every attribute of the class is a field of the table or collection. Models are defined in the app/models.py where app can be ["advert", "post", "users"].
-Django has his own way for URL mapping and it's done by editing your project url.py file (myproject/url.py), further the truncated urls are in the specific apps in the file urls.py.
-Django class and the class attributes will be the form fields which can be found in forms.py in all the apps.
-Django offers a set of classes for generic views in django.views.generic, and every generic view is one of those classes or a class that inherits from one of them. Further custom views are stored in views.py in all the apps.
-Django makes it possible to separate python and HTML, the python goes in views and HTML goes in templates. All the templates are stored in the templates folder in the specific apps.
-Migrations store the database queries in all the apps.
+### Various files
 
-Code organization is as follows:
+- advert: This folder contains business listings.
+- post: This folder contains tenders.
+- tendera: This folder contains metadata and django files.
+- users: This folder contains information about users.
+- media: This folder contains all the documents uploaded.
+- settings.py is the central configuration for all the settings in the project including the list of allowed hosts, email backend, database involved etc.
+- A model is a class that represents table or collection in our DB, and where every attribute of the class is a field of the table or collection. Models are defined in the app/models.py where app can be ["advert", "post", "users"].
+- Django has his own way for URL mapping and it's done by editing your project url.py file (myproject/url.py), further the truncated urls are in the specific apps in the file urls.py.
+- Django class and the class attributes will be the form fields which can be found in forms.py in all the apps.
+- Django offers a set of classes for generic views in django.views.generic, and every generic view is one of those classes or a class that inherits from one of them. Further custom views are stored in views.py in all the apps.
+- Django makes it possible to separate python and HTML, the python goes in views and HTML goes in templates. All the templates are stored in the templates folder in the specific apps.
+- Migrations store the database queries in all the apps.
+
+### Code organization is as follows:
 ```
 .
 ├── advert
