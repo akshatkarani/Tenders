@@ -4,5 +4,4 @@ We plan to assist businesses and organizations by providing a portal to post ten
 
 ### Setup
 
-Install the dependencies and run
-`python3 manage.py runserver`
+Click [here](https://github.com/akshatkarani/Tenders/blob/master/requirements.md) to see instructions for installation.
