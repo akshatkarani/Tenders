@@ -11,6 +11,6 @@ Click [here](https://github.com/akshatkarani/Tenders/blob/master/requirements.md
 
 ![pics/pic2.png](pics/pic2.png)
 
-![pics/pic3.png](pics/pic3png)
+![pics/pic3.png](pics/pic3.png)
 
 ![pics/pic4s.png](pics/pic4.png)
