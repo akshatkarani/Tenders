@@ -7,10 +7,10 @@ We plan to assist businesses and organizations by providing a portal to post ten
 Click [here](https://github.com/akshatkarani/Tenders/blob/master/requirements.md) to see instructions for installation.
 
 
-![Home](pics/pic1.png)
+![pics/pic1.png](pics/pic1.png)
 
-![Pic2](pics/pic2.png)
+![pics/pic2.png](pics/pic2.png)
 
-![Pic3](pics/pic3png)
+![pics/pic3.png](pics/pic3png)
 
-![Pic4](pics/pic4.png)
+![pics/pic4s.png](pics/pic4.png)
